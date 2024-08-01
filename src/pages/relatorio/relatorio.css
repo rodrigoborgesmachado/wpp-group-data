@@ -1,0 +1,13 @@
+.relatorio-sessao{
+    margin-top: var(--default-spacing);
+}
+
+.relatorio-sessao-itens{
+    padding: var(--double-default-spacing);
+    border-bottom: 1px solid grey;
+}
+
+.relatorio-sessao-destaques{
+    display: flex;
+    justify-content: space-evenly;
+}

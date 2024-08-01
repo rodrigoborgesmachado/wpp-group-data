@@ -1,0 +1,14 @@
+.passo-a-passo, .upload-file{
+    margin-top: var(--triple-default-spacing);
+    margin-bottom: var(--triple-default-spacing);
+}
+
+.passo-a-passo ol, ul{
+    margin-left: var(--triple-default-spacing);
+}
+
+.upload-file{
+    margin: var(--triple-default-spacing);
+    display: flex;
+    justify-content: space-between;;
+}
