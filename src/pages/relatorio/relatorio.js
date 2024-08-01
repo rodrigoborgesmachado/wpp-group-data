@@ -23,7 +23,7 @@ export default function Relatorio(){
 
     useEffect(() => {
         GetDate(filtro);
-    }, [relatorio]);
+    }, []);
 
     function criaInformacoesMensagensPorUsuarioPie(){
         var itens = new Array();
