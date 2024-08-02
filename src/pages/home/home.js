@@ -73,7 +73,13 @@ export default function Home(){
                         </li>
                     </ol>
                 </div>
-                <p><b>Nota:</b> Apenas são analisadas as últimas 100 mil mensagens mais recentes de cada conversa para garantir eficiência e rapidez no processamento.</p>
+                <p>
+                    <b>Notas:</b> 
+                    <ol>
+                        <li>Apenas são analisadas as últimas 100 mil mensagens mais recentes de cada conversa para garantir eficiência e rapidez no processamento (e porque o whatsapp limita a exportação de conversa).</li>
+                        <li>São gerados os dados apenas dos contatos salvos.</li>
+                    </ol>
+                </p>
                 <div className='upload-file'>
                     <input type='file' accept=".zip" onChange={handleFileChange}/>
                     <button onClick={()=> GeraRelatorio()}>Criar Relatório</button>
