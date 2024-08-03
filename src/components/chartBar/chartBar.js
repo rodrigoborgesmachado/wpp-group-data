@@ -13,3 +13,23 @@ export function BasicBars({nomes, dados}) {
     </div>
   );
 }
+
+export function GayBasicBars({dados}) {
+  return (
+    <div className='grafico'>
+      <BarChart
+        series={dados}
+        colors={[
+          '#E40303',
+          '#FF8C00',
+          '#FFED00',
+          '#008026',
+          '#24408E',
+          '#732982'
+        ]}
+        width={1000}
+        height={700}
+      />
+    </div>
+  );
+}

@@ -2,7 +2,7 @@ import './relatorio.css';
 import DadosRelatorioItem from '../../components/dadosItemRelatorio/dadosItemRelatorio';
 import BasicPie from '../../components/chartPie/chartPie.js';
 import QuadradoInfo from '../../components/quadradoInfo/quadradoInfo.js';
-import { BasicBars } from '../../components/chartBar/chartBar.js';
+import { BasicBars, GayBasicBars } from '../../components/chartBar/chartBar.js';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import api from '../../services/api.js';
@@ -73,8 +73,13 @@ export default function Relatorio(){
     function criaInformacoesMensagensHomofobicasPorUsuarioBars(){
         var itens = new Array();
 
+        var i = 0;
         relatorio.dados.forEach(element => {
-            itens.push(element.qtMsgHomofobica);
+            itens.push({
+                data: [element.qtMsgHomofobica],
+                label: element.nome
+            })
+            i++;
         });
 
         return itens;
@@ -206,7 +211,7 @@ export default function Relatorio(){
             <div className='relatorio-sessao'>
                 <h2>Quantidade de mensagens homofóbicas:</h2>
                 <div className='relatorio-sessao-itens'>
-                    <BasicBars nomes={criaNomesBars()} dados={criaInformacoesMensagensHomofobicasPorUsuarioBars()}/>
+                    <GayBasicBars nomes={criaNomesBars()} dados={criaInformacoesMensagensHomofobicasPorUsuarioBars()}/>
                 </div>
             </div>
         </div>
