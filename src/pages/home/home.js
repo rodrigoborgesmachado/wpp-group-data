@@ -1,5 +1,5 @@
 import './home.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import api from '../../services/api';
 import { toast } from 'react-toastify';
 import Loader from '../../components/loader/loader';
@@ -24,29 +24,18 @@ export default function Home(){
         formData.append('file', file);
 
         try {
-            const response = await api.post('/Wpp', formData)
-            .then(response => {
-                setLoadding(false);
-                navigate("/relatorio/" + response.data.object.id, {replace: true});
-            })
-            .catch(error => {
-                setLoadding(false);
-                toast.error('Erro ao processar o arquivo: ' + error);
-            });
-            
+            const response = await api.post('/Wpp', formData);
+            navigate("/relatorio/" + response.data.object.id, {replace: true});
         } catch (error) {
-            console.log(error);
-            toast.error("There was an error uploading the file!" + error);
+            toast.error('Erro ao processar o arquivo: ' + error);
+        } finally {
+            setLoadding(false);
         }
     }
 
-    if(loadding)
-        return(
-            <Loader/>
-        )
-    else
     return(
         <div className="container">
+            {loadding ? <Loader/> : null}
             <div className='home'>
                 <div className='titulo'>
                     <h1>Wpp Group Data</h1>
@@ -82,7 +71,9 @@ export default function Home(){
                 </p>
                 <div className='upload-file'>
                     <input type='file' accept=".zip" onChange={handleFileChange}/>
-                    <button onClick={()=> GeraRelatorio()}>Criar Relatório</button>
+                    <button onClick={GeraRelatorio} disabled={loadding}>
+                        {loadding ? 'Gerando relatorio...' : 'Criar relatorio'}
+                    </button>
                 </div>
             </div>
         </div>
