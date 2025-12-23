@@ -10,5 +10,13 @@
 .upload-file{
     margin: var(--triple-default-spacing);
     display: flex;
-    justify-content: space-between;;
+    justify-content: space-between;
+    gap: var(--double-default-spacing);
+    flex-wrap: wrap;
+}
+
+.upload-actions {
+    display: flex;
+    gap: var(--default-spacing);
+    flex-wrap: wrap;
 }

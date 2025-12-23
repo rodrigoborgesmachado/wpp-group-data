@@ -14,7 +14,7 @@ export default function Home(){
         setFile(event.target.files[0]);
     };
 
-    async function GeraRelatorio(){
+    async function GeraRelatorio(rotaDestino, type){
         if (!file) {
             toast.info("Por favor selecione um arquivo.");
             return;
@@ -24,8 +24,8 @@ export default function Home(){
         formData.append('file', file);
 
         try {
-            const response = await api.post('/Wpp', formData);
-            navigate("/relatorio/" + response.data.object.id, {replace: true});
+            const response = await api.post(type == 1 ? '/Wpp' : '/Wpp/retrospective', formData);
+            navigate(rotaDestino.replace(':id', response.data.object.id), {replace: true});
         } catch (error) {
             toast.error('Erro ao processar o arquivo: ' + error);
         } finally {
@@ -71,9 +71,14 @@ export default function Home(){
                 </p>
                 <div className='upload-file'>
                     <input type='file' accept=".zip" onChange={handleFileChange}/>
-                    <button onClick={GeraRelatorio} disabled={loadding}>
-                        {loadding ? 'Gerando relatorio...' : 'Criar relatorio'}
-                    </button>
+                    <div className='upload-actions'>
+                        <button onClick={() => GeraRelatorio('/relatorio/:id', 1)} disabled={loadding}>
+                            {loadding ? 'Gerando relatorio...' : 'Criar relatorio'}
+                        </button>
+                        <button onClick={() => GeraRelatorio('/relatorio/:id', 2)} disabled={loadding}>
+                            {loadding ? 'Gerando relatorio...' : 'Criar retrospectiva'}
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

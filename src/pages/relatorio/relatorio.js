@@ -14,7 +14,7 @@ export default function Relatorio(){
     const [loadding, setLoadding] = useState(true);
 
     async function GetDate(id){
-        api.get('/Wpp?id=' + id)
+        api.get('/Wpp?id=' + id + '&type=1')
         .then(response => {
             setRelatorio(response.data.object);
             setLoadding(false);
@@ -23,7 +23,7 @@ export default function Relatorio(){
 
     useEffect(() => {
         GetDate(filtro);
-    }, []);
+    }, [filtro]);
 
     function criaInformacoesMensagensPorUsuarioPie(){
         var itens = new Array();
