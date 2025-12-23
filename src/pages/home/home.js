@@ -75,7 +75,7 @@ export default function Home(){
                         <button onClick={() => GeraRelatorio('/relatorio/:id', 1)} disabled={loadding}>
                             {loadding ? 'Gerando relatorio...' : 'Criar relatorio'}
                         </button>
-                        <button onClick={() => GeraRelatorio('/relatorio/:id', 2)} disabled={loadding}>
+                        <button onClick={() => GeraRelatorio('/relatorio/:id/retrospective', 2)} disabled={loadding}>
                             {loadding ? 'Gerando relatorio...' : 'Criar retrospectiva'}
                         </button>
                     </div>
