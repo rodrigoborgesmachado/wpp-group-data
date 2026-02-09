@@ -13,10 +13,10 @@ export default function Contato() {
                 </div>
                 <div className="contato-card destaque">
                     <h2>Email</h2>
-                    <p>rodrigoborgesmachado@gmail.com</p>
+                    <p>rodrigomachado@sunsalesystem.com</p>
                     <a
                         className="contato-link"
-                        href="mailto:rodrigoborgesmachado@gmail.com"
+                        href="mailto:rodrigomachado@sunsalesystem.com"
                     >
                         Enviar email
                     </a>
